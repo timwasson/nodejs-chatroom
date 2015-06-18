@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font: 13px Helvetica, Arial;
+}
+form#chat {
+  background: #47040d;
+  padding: 3px;
+  position: fixed;
+  bottom: 50px;
+  height: 46px;
+  width: 100%;
+  border-bottom: 5px solid #5f0512;
+}
+form#chat input {
+  border: 0;
+  padding: 10px;
+  position: absolute;
+  left: 50px;
+  width: calc(100% - 55px);
+  right: 55px;
+}
+form#chat button {
+  width: 50px;
+  background: #3e3e3e;
+  color: #fff;
+  right: 5px;
+  position: absolute;
+  border: none;
+  padding: 10px;
+}
+form#chat .chattext {
+  width: 40px;
+  text-align: right;
+  color: #fff;
+  display: inline-block;
+  margin-top: 10px;
+}
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  bottom: 100px;
+  right: 0;
+  left: 0;
+  overflow: auto;
+}
+#messages li {
+  padding: 5px 10px;
+}
+#messages li:nth-child(odd) {
+  background: #eee;
+}
+#messages li.info {
+  font-style: italic;
+  color: #3e3e3e;
+}
+#messages li span {
+  font-weight: bold;
+}
+#typing {
+  color: grey;
+}
+#username {
+  color: #ff7900;
+  background-color: #5f0512;
+  position: fixed;
+  top: 0;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+#username form {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+#username form input,
+#username form button {
+  padding: 8px;
+}
+#username form button {
+  background-color: #3e3e3e;
+  border-color: #3e3e3e;
+  border-style: solid;
+  color: #fff;
+}
+.player {
+  position: fixed;
+  bottom: 0;
+  height: 50px;
+  background-color: #717171;
+  right: 0;
+  left: 0;
+  color: #fff;
+}
+.player p {
+  height: 50px;
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+.player ul {
+  list-style-type: none;
+}
+.player ul li {
+  float: left;
+}
+.player ul li a {
+  height: 50px;
+  width: 50px;
+  display: block;
+  color: #fff;
+  background-color: #3e3e3e;
+  text-decoration: none;
+  font-size: 3.5em;
+  text-align: center;
+}

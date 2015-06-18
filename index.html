@@ -1,55 +1,41 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-      #typing {
-        color:grey;
-      }
-    </style>
+    <title>Atomicast Radio</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
   </head>
   <body>
-    <ul id="messages"></ul>
-    <p id="typing">hi</p>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+    
+    <div id="username">
+      <form action="" id="user">
+        <p>If you want to chat, enter in your username below.</p>
+        <input name="username" type="text" />
+        <button>&#10132;</button>
+      </form>
+    </div>
+    
+    <div id="messages">
+      <ul>
+      </ul>
+    </div>
+    <p id="typing"></p>
+    <form id="chat" action="">
+      <span class="chattext">Chat:</span> 
+      <input id="m" autocomplete="off" placeholder="Type away, we're reading. Maybe." /><button>&#10132;</button>
     </form>
+    
+    <div class="player">
+      <ul>
+        <li><a class="play" href="#">&#9658;</a></li>
+        <li><a class="pause" href="#">&#10074;&#10074;</a></li>
+      </ul>
+      <p>Now playing: <span class="now-playing"></span></p>
+      <audio id="ep_audio" src="http://162.243.86.67:8000/airtime_128"></audio>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      var socket = io();
-      
-      var person = prompt("Please enter your name", "Harry Potter");
-      
-      $('form').submit(function() {
-        socket.emit('chat message', [person,$('#m').val()]);
-        return false;
-      });
-      $("#m").keyup(function() {
-        socket.emit('is typing', person + " typing...");
-        return false;
-      });
-      socket.on('chat message', function(msg) {
-        $("#messages").append($("<li>").html("<span>" + msg[0] + ": " + msg[1]));
-      });
-      socket.on('disconnect', function(msg) {
-        $("#messages").append($("<li>").html("<span>" + msg[0] + " disconnected"));
-      });
-      socket.on('is typing', function(msg) {
-        $("#typing").html(msg);
-        setTimeout(function() { $("#typing").html(""); }, 500);
-      });
-      socket.on('connect', function(msg) {
-        $("#messages").append('a user connected');
-      });
-    </script>
+    <script src="/js/js.js"></script>
   </body>
 </html>
