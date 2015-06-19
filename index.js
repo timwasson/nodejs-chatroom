@@ -31,6 +31,7 @@ app.get("/now-playing", function(req, res) {
 
 app.get("/", function(req, res) {
   res.sendFile(rootDir + '/index.html');
+  console.log('Go fuck yourself, TJW');
 });
 
 io.on('connection', function(socket) {
