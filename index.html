@@ -1,37 +1,43 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>Atomicast Radio</title>
+    <title>Chat with Atomicast!</title>
     <link rel="stylesheet" href="/css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
   </head>
   <body>
-    
+    <h1>The Atomicast Show Chat</h1>
     <div id="username">
       <form action="" id="user">
-        <p>If you want to chat, enter in your username below.</p>
-        <input name="username" type="text" />
-        <button>&#10132;</button>
+        <p id="usernameHelp">If you want to chat, enter in your username below.</p>
+        <label class="visually-hidden" for="enterUsername">Enter your username</label>
+        <input name="username" id="enterUsername" type="text" aria-describedby="usernameHelp" />
+        <button>&#10132;<span class="visually-hidden">Submit</span></button>
       </form>
     </div>
     
-    <div id="messages">
-      <ul>
-      </ul>
+    <div id="messagesPage" aria-hidden="true">
+      <div id="messages">
+        <ul>
+          <li><span id="typing"></span></li>
+        </ul>
+      </div>
+      <!--p id="typing"></p-->
+      <form id="chat" action="">
+        <span class="chattext">Chat:</span> 
+        <label class="visually-hidden" for="m">Enter your message</label>
+        <input id="m" autocomplete="off" placeholder="Type away, we're reading. Maybe." />
+        <button>&#10132;<span class="visually-hidden">Submit</span></button>
+      </form>
     </div>
-    <p id="typing"></p>
-    <form id="chat" action="">
-      <span class="chattext">Chat:</span> 
-      <input id="m" autocomplete="off" placeholder="Type away, we're reading. Maybe." /><button>&#10132;</button>
-    </form>
     
     <div class="player">
       <ul>
-        <li><a class="play" href="#">&#9658;</a></li>
-        <li><a class="pause" href="#">&#10074;&#10074;</a></li>
+        <li><a class="play" href="#">&#9658;<span class="visually-hidden">Play</span></a></li>
+        <li><a class="pause" href="#">&#10074;&#10074;<span class="visually-hidden">Pause</span></a></li>
       </ul>
-      <p>Now playing: <span class="now-playing"></span></p>
+      <p>Now playing: <span class="now-playing" aria-live="alert"></span></p>
       <audio id="ep_audio" src="http://162.243.86.67:8000/airtime_128"></audio>
     </div>
     <script src="/socket.io/socket.io.js"></script>

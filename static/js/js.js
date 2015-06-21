@@ -4,7 +4,8 @@ var person; // = prompt("Please enter your name", "Harry Potter");
 
 $('form#user').submit(function() {
   if($("form#user input").val() != "") {
-    $("#username").fadeOut();
+    $("#username").fadeOut().attr('aria-hidden', true);
+    $('#messagesPage').attr('aria-hidden', false);
     person = $("form#user input").val();
   } else {
     // Put up an error.
@@ -35,11 +36,14 @@ socket.on('chat message', function(msg) {
   
 });
 socket.on('disconnect', function(msg) {
-  $("#messages").append($("<li><span>A user disconnected</span></li>"));
+  var $li = $('<li />').html('<span>A user disconnected</span>');
+  $li.prependTo($('#messages ul'));
+  //$li.fadeOut('10000');
+  //$("#messages").append($("<li><span>A user disconnected</span></li>"));
 });
 socket.on('is typing', function(msg) {
   $("#typing").html(msg);
-  setTimeout(function() { $("#typing").html(""); }, 500);
+  setTimeout(function() { $("#typing").html(""); }, 3000);
 });
 socket.on('connect', function(msg) {
   $("#messages ul").append("<li class=\"info\">A user connected</li>");
