@@ -29,7 +29,10 @@ socket.on('chat message', function(msg) {
   $("#messages").scrollTop($("#messages ul").height());
   
   console.log($("#messages ul").height());
-  $("#m").val("");
+  if(msg[0] === person) {
+    $("#m").val("");
+  }
+  
 });
 socket.on('disconnect', function(msg) {
   $("#messages").append($("<li><span>A user disconnected</span></li>"));
