@@ -1,3 +1,8 @@
+.visually-hidden {
+  left: -999em;
+  top: -999em;
+  position: absolute;
+}
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +25,7 @@ form#chat input {
   padding: 10px;
   position: absolute;
   left: 50px;
-  width: calc(100% - 55px);
+  width: calc(45%);
   right: 55px;
 }
 form#chat button {
